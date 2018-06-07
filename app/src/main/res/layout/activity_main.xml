@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.ActivityMain">
+
+
+    <android.support.constraint.Guideline
+        android:id="@+id/left_border"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin= "@dimen/horizontal_padding" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/right_border"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/horizontal_padding" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/top_border"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="@dimen/vertical_padding_top" />
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/gothamrounded_medium"
+        android:text="24"
+        android:textColor="@color/textColor"
+        android:textSize="48sp"
+        app:layout_constraintStart_toStartOf="@id/left_border"
+        app:layout_constraintTop_toTopOf="@id/top_border" />
+
+    <TextView
+        android:id="@+id/tv_month"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/gothamrounded_bold"
+        android:text="SEP"
+        android:textColor="@color/textColor"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_date"
+        app:layout_constraintTop_toTopOf="@+id/tv_date" />
+
+    <TextView
+        android:id="@+id/tv_year"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/gothamrounded_book"
+        android:text="2017"
+        android:textColor="@color/textColor"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/tv_month"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tv_date"/>
+
+    <TextView
+        android:id="@+id/tv_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/gothamrounded_bold"
+        android:text="TUESDAY"
+        android:textColor="@color/textColor"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf= "@+id/right_border"
+        app:layout_constraintTop_toTopOf="@+id/tv_month"/>
+
+    <TextView
+        android:id="@+id/tv_today"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/gothamrounded_book"
+        android:text="TODAY"
+        android:textColor="@color/blue"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@id/right_border"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tv_date"/>
+
+    <TextView
+        android:id="@+id/tv_completedTasks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="7 tasks"
+        android:fontFamily="@font/gothamrounded_medium"
+        android:textSize="15sp"
+        android:textColor="@color/blue"
+        app:layout_constraintTop_toBottomOf="@id/tv_date"
+        app:layout_constraintStart_toStartOf="@id/left_border"/>
+
+    <TextView
+        android:id="@+id/tv_separator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:fontFamily="@font/gothamrounded_medium"
+        android:text="|"
+        android:textColor="@color/lightGray"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@id/tv_completedTasks"
+        app:layout_constraintTop_toBottomOf="@id/tv_date" />
+
+    <TextView
+        android:id="@+id/tv_pendingTasks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:fontFamily="@font/gothamrounded_medium"
+        android:text="0 completed"
+        android:textColor="@color/lightGray"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@id/tv_separator"
+        app:layout_constraintTop_toBottomOf="@id/tv_date" />
+
+    <android.support.constraint.Group
+        android:id="@+id/group_taskStats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:constraint_referenced_ids="tv_completedTasks,tv_separator, tv_pendingTasks"/>
+
+    <FrameLayout
+        android:id="@+id/fragment_tasks_list_container"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="@id/right_border"
+        app:layout_constraintStart_toStartOf="@id/left_border"
+        app:layout_constraintTop_toBottomOf="@id/tv_completedTasks" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/vertical_padding_bottom"
+        android:src="@drawable/ic_add_black_24dp"
+        app:rippleColor="@color/whiteBackground"
+        android:clickable="true"
+        android:onClick="LoadBottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/right_border"
+        app:layout_constraintStart_toStartOf="@+id/left_border"
+        android:focusable="true" />
+
+</android.support.constraint.ConstraintLayout>
