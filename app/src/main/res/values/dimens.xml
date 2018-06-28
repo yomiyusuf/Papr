@@ -8,5 +8,6 @@
     <dimen name="vertical_padding_bottom_sheet">12dp</dimen>
 
     <dimen name="horizontal_padding_bottom_sheet">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 
 </resources>

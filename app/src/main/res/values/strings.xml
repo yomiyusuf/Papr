@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Papr</string>
+    <string name="title_activity_calender_view">Calender View</string>
 </resources>

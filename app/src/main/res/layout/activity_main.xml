@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.ActivityMain">
+    tools:context=".ui.ActivityMain">
 
 
     <android.support.constraint.Guideline
@@ -130,7 +130,7 @@
     <FrameLayout
         android:id="@+id/fragment_tasks_list_container"
         android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_height="300dp"
         android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="@id/right_border"
         app:layout_constraintStart_toStartOf="@id/left_border"
