@@ -1,4 +1,4 @@
-package app.papr.papr.ui;
+package app.papr.papr.ui.ViewModels;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
@@ -11,27 +11,28 @@ import java.util.List;
 import app.papr.papr.db.Task;
 import app.papr.papr.db.TaskRepository;
 
-public class TaskViewModel extends AndroidViewModel {
+public class CalendarViewViewModel extends AndroidViewModel {
 
     private TaskRepository mRepository;
     private LiveData<List<Task>> mTasks;
 
-    public TaskViewModel(@NonNull Application application) {
+    private Date selectedDate;
+
+    public CalendarViewViewModel(@NonNull Application application) {
         super(application);
         mRepository = new TaskRepository(application);
-
     }
 
-    public LiveData<List<Task>> getAllTasks(){
-        return mTasks;
+    public void setSelectedDate(Date date){
+        selectedDate = date;
+    }
+
+    public Date getSelectedDate() {
+        return selectedDate;
     }
 
     public LiveData<List<Task>> getTasksByDate(Date date) {
         mTasks = mRepository.getAllTasksDueOnDate(date);
         return mTasks;
-    }
-
-    public void insert (Task task) {
-        mRepository.insert(task);
     }
 }

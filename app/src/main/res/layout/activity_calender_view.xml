@@ -32,6 +32,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+        android:id="@+id/calendar"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/guideline_center_horizontal"

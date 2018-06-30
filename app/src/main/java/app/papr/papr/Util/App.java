@@ -6,9 +6,8 @@ import android.os.Build;
 import android.view.View;
 
 public class App{
-    private static boolean shouldChangeStatusBarTintToDark = true;
 
-    public static void setStatusBarIconsColor(Activity activity) {
+    public static void setStatusBarIconsColor(Activity activity, boolean shouldChangeStatusBarTintToDark) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             View decor = activity.getWindow().getDecorView();
             if (shouldChangeStatusBarTintToDark) {

@@ -19,27 +19,23 @@ import java.util.List;
 
 import app.papr.papr.R;
 import app.papr.papr.db.Task;
+import app.papr.papr.ui.ViewModels.TaskViewModel;
 
-public class FragmentTasks extends Fragment {
+public class FragmentTodayTasks extends Fragment {
 
-    private TaskViewModel mTaskViewModel;
-    public FragmentTasks(){
-
+    private TaskViewModel mTasksViewModel;
+    public FragmentTodayTasks(){
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-
-
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_tasks, container, false);
-
-
     }
 
     @Override
@@ -50,13 +46,13 @@ public class FragmentTasks extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        mTaskViewModel = ViewModelProviders.of(getActivity()).get(TaskViewModel.class);
+        mTasksViewModel = ViewModelProviders.of(getActivity()).get(TaskViewModel.class);
 
         Date today = getTodayDate();
 
         //Date today = Calendar.getInstance().getTime();
 
-        mTaskViewModel.getTasksByDate(today).observe(this, new Observer<List<Task>>() {
+        mTasksViewModel.getTasksByDate(today).observe(this, new Observer<List<Task>>() {
             @Override
             public void onChanged(@Nullable List<Task> taskList) {
                 adapter.setTasks(taskList);

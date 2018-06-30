@@ -71,13 +71,13 @@ public abstract class PaprDB extends RoomDatabase {
             Task task4 = new Task("Create new fork",today, today);
             Task task5 = new Task("Complete project",today, today);
 
-            mDao.insert(task, task2, task3, task4, task5);
+            mDao.insert(new Task[]{task, task2, task3, task4, task5});
 
             return null;
         }
     }
 
-    private static Date getTodayDate(){
+    public static Date getTodayDate(){
         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         Date today = new Date();
         Date todayWithZeroTime = null;

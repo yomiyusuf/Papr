@@ -20,12 +20,12 @@ public class ActivityMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        App.setStatusBarIconsColor(this);
+        App.setStatusBarIconsColor(this, shouldChangeStatusBarTintToDark);
         if(findViewById(R.id.fragment_tasks_list_container) != null){
             if(savedInstanceState != null){ //check if being restored from a previous state to prevent overlapping fragments
                 return;
             }
-            FragmentTasks fragmentTasks = new FragmentTasks();
+            FragmentTodayTasks fragmentTasks = new FragmentTodayTasks();
             fragmentTasks.setArguments(getIntent().getExtras()); // Pass the Intent's extras to the fragment as arguments In case this activity was started with special instructions from an Intent
             fm.beginTransaction()
                     .add(R.id.fragment_tasks_list_container, fragmentTasks, FRAGMENT_TASKS).commit();
