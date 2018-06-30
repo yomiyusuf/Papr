@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/offWhite"
+    tools:context=".ui.ActivityCalenderView">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/calendarView_left_border"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin= "0dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/calendarView_right_border"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/horizontal_padding" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+        android:id="@+id/calendar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@id/calendarView_left_border"
+        app:layout_constraintEnd_toStartOf="@id/guideline_center_vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/whiteBackground"
+        app:mcv_selectionColor="@color/blue"
+        app:mcv_leftArrowMask="@drawable/ic_chevron_left_24dp"
+        app:mcv_rightArrowMask="@drawable/ic_chevron_right_24dp"/>
+
+    <TextView
+        android:id="@+id/tv_tasks_header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Tasks for Tue, 6th May, 2018"
+        android:textColor="@color/blue"
+        android:fontFamily="@font/gothamrounded_book"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@id/calendarView_right_border"
+        app:layout_constraintStart_toStartOf="@id/guideline_center_vertical"
+        app:layout_constraintTop_toTopOf="@id/calendar" />
+
+    <TextView
+        android:id="@+id/tv_tasks_count_header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/gothamrounded_book"
+        android:text="6 Tasks"
+        android:textColor="@color/lightGray"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@id/calendarView_right_border"
+        app:layout_constraintStart_toStartOf="@id/tv_tasks_header"
+        app:layout_constraintTop_toBottomOf="@id/tv_tasks_header" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/calendarView_right_border"
+        app:layout_constraintStart_toStartOf="@id/tv_tasks_header"
+        app:layout_constraintTop_toBottomOf="@id/tv_tasks_count_header"
+        android:layout_marginBottom="20dp">
+
+        <LinearLayout
+            android:id="@+id/ll_tasks_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"></LinearLayout>
+
+    </ScrollView>
+
+
+</android.support.constraint.ConstraintLayout>

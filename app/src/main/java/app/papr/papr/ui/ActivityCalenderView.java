@@ -35,7 +35,7 @@ public class ActivityCalenderView extends AppCompatActivity implements OnDateSel
 
         calender.setOnDateChangedListener(this);
 
-        calender.setDateSelected(mCalendarViewModel.getSelectedDate(), true);
+        //calender.setDateSelected(mCalendarViewModel.getSelectedDate(), true);
     }
 
     @Override

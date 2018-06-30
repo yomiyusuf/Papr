@@ -18,6 +18,7 @@ import java.util.Date;
 import java.util.List;
 
 import app.papr.papr.R;
+import app.papr.papr.Util.DateUtil;
 import app.papr.papr.db.Task;
 import app.papr.papr.ui.ViewModels.TaskViewModel;
 
@@ -48,7 +49,7 @@ public class FragmentTodayTasks extends Fragment {
 
         mTasksViewModel = ViewModelProviders.of(getActivity()).get(TaskViewModel.class);
 
-        Date today = getTodayDate();
+        Date today = DateUtil.getTodayDate();
 
         //Date today = Calendar.getInstance().getTime();
 
@@ -60,15 +61,5 @@ public class FragmentTodayTasks extends Fragment {
         });
     }
 
-    public static Date getTodayDate(){
-        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        Date today = new Date();
-        Date todayWithZeroTime = null;
-        try {
-            todayWithZeroTime = formatter.parse(formatter.format(today));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return todayWithZeroTime;
-    }
+
 }
