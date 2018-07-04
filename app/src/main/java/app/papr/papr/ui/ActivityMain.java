@@ -5,10 +5,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.os.Build;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.TouchDelegate;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
@@ -23,6 +25,7 @@ public class ActivityMain extends AppCompatActivity {
     FragmentManager fm = getSupportFragmentManager();
 
     TextView tv_date;
+    View parent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +42,12 @@ public class ActivityMain extends AppCompatActivity {
                     .add(R.id.fragment_tasks_list_container, fragmentTasks, FRAGMENT_TASKS).commit();
         }
 
+        parent = findViewById(R.id.root);
         tv_date = findViewById(R.id.tv_date);
+
+        //increase the touch area of tv_date to the right
+        setTouchDelegate(parent, tv_date);
+
         tv_date.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -69,6 +77,25 @@ public class ActivityMain extends AppCompatActivity {
 
         FragmentBottomAddTask fragmentBottomAddTask = new FragmentBottomAddTask();
         fragmentBottomAddTask.show(getSupportFragmentManager(), fragmentBottomAddTask.getTag());
+    }
+
+
+    private void setTouchDelegate(View parent, final View view){
+
+        //Post in the parent's message queue to ensure that the parent lays out its children before call to getHeight
+        parent.post(new Runnable() {
+            @Override
+            public void run() {
+                Rect delegateArea = new Rect();
+                view.getHitRect(delegateArea);
+                delegateArea.right += 200;
+                TouchDelegate expandedArea = new TouchDelegate(delegateArea, view);
+                //give the delagate to an ancestor of the view we're delagating the area to
+                if(View.class.isInstance(view.getParent())){
+                    ((View) view.getParent()).setTouchDelegate(expandedArea);
+                }
+            }
+        });
     }
 
     private void ShowKeyboard() {

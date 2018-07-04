@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Papr</string>
     <string name="title_activity_calender_view">Calender View</string>
+    <string name="add_new_task">Add new task</string>
+    <string name="today">Today</string>
+    <string name="tomorrow">Tomorrow</string>
+    <string name="weekend">Weekend</string>
+    <string name="save">Save</string>
 </resources>

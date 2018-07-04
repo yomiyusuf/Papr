@@ -1,10 +1,6 @@
 package app.papr.papr.ui;
 
-import android.app.ActivityOptions;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,12 +10,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import app.papr.papr.R;
 
 public class FragmentBottomAddTask extends BottomSheetDialogFragment {
-    Button btnSave;
+    Button btn_save;
+    EditText edit_text_new_tasks;
+    RadioGroup rg_day;
+    RadioButton rb_today;
+
 
     public  FragmentBottomAddTask(){}
 
@@ -40,10 +43,16 @@ public class FragmentBottomAddTask extends BottomSheetDialogFragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstances){
-        btnSave = getView().findViewById(R.id.btn_save_tasks);
-        btnSave.setOnClickListener(new View.OnClickListener() {
+
+        rg_day = getView().findViewById(R.id.radio_btn_group_day);
+        //set the default selected RadioButton to today.
+        rg_day.check(R.id.rb_today);
+
+        btn_save = getView().findViewById(R.id.btn_save_tasks);
+        btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Toast.makeText(getActivity(),"saved", Toast.LENGTH_SHORT).show();
             }
         });
