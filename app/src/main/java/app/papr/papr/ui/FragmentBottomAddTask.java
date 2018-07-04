@@ -1,6 +1,11 @@
 package app.papr.papr.ui;
 
+import android.app.ActivityOptions;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetDialogFragment;
@@ -39,7 +44,7 @@ public class FragmentBottomAddTask extends BottomSheetDialogFragment {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "saved", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),"saved", Toast.LENGTH_SHORT).show();
             }
         });
     }

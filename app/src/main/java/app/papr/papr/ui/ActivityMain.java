@@ -1,11 +1,17 @@
 package app.papr.papr.ui;
 
+import android.app.ActivityOptions;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.os.Build;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.TextView;
 
 import app.papr.papr.R;
 import app.papr.papr.Util.App;
@@ -16,11 +22,13 @@ public class ActivityMain extends AppCompatActivity {
 
     FragmentManager fm = getSupportFragmentManager();
 
+    TextView tv_date;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //App.setStatusBarIconsColor(this, shouldChangeStatusBarTintToDark);
+        App.setStatusBarIconsColor(this, shouldChangeStatusBarTintToDark);
         if(findViewById(R.id.fragment_tasks_list_container) != null){
             if(savedInstanceState != null){ //check if being restored from a previous state to prevent overlapping fragments
                 return;
@@ -30,6 +38,27 @@ public class ActivityMain extends AppCompatActivity {
             fm.beginTransaction()
                     .add(R.id.fragment_tasks_list_container, fragmentTasks, FRAGMENT_TASKS).commit();
         }
+
+        tv_date = findViewById(R.id.tv_date);
+        tv_date.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(ActivityMain.this,  ActivityCalenderView.class);
+
+                Bundle b = null;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    //b = ActivityOptions.makeScaleUpAnimation(view, 0, 0, view.getWidth(),
+                    //                                         view.getHeight()).toBundle();
+                    Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
+                    bitmap.eraseColor(Color.parseColor("#308cf8"));
+
+                    b = ActivityOptions.makeThumbnailScaleUpAnimation(view, bitmap, 0, 0).toBundle();
+                }
+                startActivity(i, b);
+
+            }
+        });
     }
 
     public void LoadBottom(View view) {

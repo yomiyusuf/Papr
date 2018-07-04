@@ -61,8 +61,7 @@
             android:padding="5dp"
             android:layout_margin="5dp"
             android:text="Today"
-            android:fontFamily="@font/gothamrounded"
-            android:textColor="@color/radio_btn_color"/>
+            style="@style/RadioButtonsCustom"/>
 
         <RadioButton
             android:layout_width="wrap_content"
@@ -72,8 +71,8 @@
             android:padding="5dp"
             android:layout_margin="5dp"
             android:text="Tomorrow"
-            android:fontFamily="@font/gothamrounded"
-            android:textColor="@color/radio_btn_color"/>
+            style="@style/RadioButtonsCustom"
+            />
 
         <RadioButton
             android:layout_width="wrap_content"
@@ -83,8 +82,7 @@
             android:padding="5dp"
             android:layout_margin="5dp"
             android:text="Weekend"
-            android:fontFamily="@font/gothamrounded"
-            android:textColor="@color/radio_btn_color"/>
+            style="@style/RadioButtonsCustom"/>
     </RadioGroup>
 
     <Button
