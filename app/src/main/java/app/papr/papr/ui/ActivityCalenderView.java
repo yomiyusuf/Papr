@@ -4,6 +4,8 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.prolificinteractive.materialcalendarview.CalendarDay;
@@ -20,6 +22,7 @@ public class ActivityCalenderView extends AppCompatActivity implements OnDateSel
     private CalendarViewViewModel mCalendarViewModel;
 
     MaterialCalendarView calender;
+    TextView dateHeader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,7 @@ public class ActivityCalenderView extends AppCompatActivity implements OnDateSel
         mCalendarViewModel = ViewModelProviders.of(this).get(CalendarViewViewModel.class);
 
         calender = findViewById(R.id.calendar);
+        dateHeader = findViewById(R.id.tv_tasks_header);
 
         if (mCalendarViewModel.getSelectedDate() == null)
             mCalendarViewModel.setSelectedDate(DateUtil.getTodayDate());
@@ -36,6 +40,7 @@ public class ActivityCalenderView extends AppCompatActivity implements OnDateSel
         calender.setOnDateChangedListener(this);
 
         //calender.setDateSelected(mCalendarViewModel.getSelectedDate(), true);
+        dateHeader.setText(Html.fromHtml("Tasks for Tue" + "<b> 6th, July 2018 </b>"));
     }
 
     @Override

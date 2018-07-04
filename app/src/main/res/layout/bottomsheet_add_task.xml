@@ -44,25 +44,55 @@
         app:layout_constraintStart_toStartOf="@id/left_guide"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btn_today"
+    <RadioGroup
+        android:id="@+id/radio_btn_group_day"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Today"
-        android:fontFamily="@font/gothamrounded_medium"
-        android:textColor="@color/blue"
+        android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/taskadd"
         app:layout_constraintStart_toStartOf="@id/left_guide"
-        android:textAllCaps="false"
-        android:textSize="20sp"
-        android:background="@drawable/btn_add_task_day_selected"
-        />
+        app:layout_constraintEnd_toStartOf="@id/right_guide">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/radio_selector_background"
+            android:button="@android:color/transparent"
+            android:padding="5dp"
+            android:layout_margin="5dp"
+            android:text="Today"
+            android:fontFamily="@font/gothamrounded"
+            android:textColor="@color/radio_btn_color"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/radio_selector_background"
+            android:button="@android:color/transparent"
+            android:padding="5dp"
+            android:layout_margin="5dp"
+            android:text="Tomorrow"
+            android:fontFamily="@font/gothamrounded"
+            android:textColor="@color/radio_btn_color"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/radio_selector_background"
+            android:button="@android:color/transparent"
+            android:padding="5dp"
+            android:layout_margin="5dp"
+            android:text="Weekend"
+            android:fontFamily="@font/gothamrounded"
+            android:textColor="@color/radio_btn_color"/>
+    </RadioGroup>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_save_tasks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/btn_add_task_save"
         android:fontFamily="@font/gothamrounded_medium"
         android:text="Save"
@@ -70,14 +100,8 @@
         android:textColor="@color/whiteBackground"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/right_guide" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/right_guide"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintEnd_toEndOf="@id/right_guide"
+        app:layout_constraintTop_toBottomOf="@id/radio_btn_group_day" />
 
 
 

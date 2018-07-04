@@ -20,7 +20,7 @@ public class ActivityMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        App.setStatusBarIconsColor(this, shouldChangeStatusBarTintToDark);
+        //App.setStatusBarIconsColor(this, shouldChangeStatusBarTintToDark);
         if(findViewById(R.id.fragment_tasks_list_container) != null){
             if(savedInstanceState != null){ //check if being restored from a previous state to prevent overlapping fragments
                 return;

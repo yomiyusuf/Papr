@@ -8,11 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.Toast;
 
 import app.papr.papr.R;
 
 public class FragmentBottomAddTask extends BottomSheetDialogFragment {
+    Button btnSave;
 
     public  FragmentBottomAddTask(){}
 
@@ -29,6 +31,17 @@ public class FragmentBottomAddTask extends BottomSheetDialogFragment {
         getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         return rootView;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstances){
+        btnSave = getView().findViewById(R.id.btn_save_tasks);
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "saved", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
